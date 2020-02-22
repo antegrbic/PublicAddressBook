@@ -1,0 +1,94 @@
+﻿@model PaginatedList<PublicAddressBook.Domain.Models.Contact>
+
+@{
+    ViewData["Title"] = "View contacts";
+}
+
+<h1>View, add, edit and delete contacts in public address book!</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Contact ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Birth date
+            </th>
+            <th>
+                Street number
+            </th>
+            <th>
+                Street name
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Country
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address.StreetNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address.StreetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address.Country)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ContactId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ContactId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ContactId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+
+<div>
+    <p></p>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
