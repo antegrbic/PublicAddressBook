@@ -63,7 +63,7 @@ namespace PublicAddressBook
 
             app.UseAuthorization();
 
-            app.UseSignalR(routes => routes.MapHub<ContactHub>("/api/contactHub"));
+            app.UseSignalR(routes => routes.MapHub<ContactHub>("/contactHub"));
 
             app.UseEndpoints(endpoints =>
             {

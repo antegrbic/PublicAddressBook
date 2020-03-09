@@ -45,7 +45,7 @@ namespace PublicAddressBook.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            await _hubContext.Clients.All.SendAsync("SendMessage", GetAllAsync());
+            await _hubContext.Clients.All.SendAsync("Reload");
 
             return Ok(ContactDTO.Create(result.Contact));
         }
@@ -57,6 +57,8 @@ namespace PublicAddressBook.Controllers
 
             if (!result.Success)
                 return BadRequest(result.Message);
+
+            await _hubContext.Clients.All.SendAsync("Reload");
 
             return Ok(ContactDTO.Create(result.Contact));
         }
@@ -72,6 +74,8 @@ namespace PublicAddressBook.Controllers
 
             if (!result.Success)
                 return BadRequest(result.Message);
+
+            await _hubContext.Clients.All.SendAsync("Reload");
 
             return Ok(ContactDTO.Create(result.Contact));
         }

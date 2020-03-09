@@ -9,10 +9,8 @@ namespace PublicAddressBook.Hubs
     {
         public class ContactHub : Hub
         {
-            public async void SendMessage()
-            {
-                
-            }
+            public Task Reload() => Clients.Others.SendAsync("Reload");
+             
         }
     }
 }
