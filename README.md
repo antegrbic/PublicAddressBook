@@ -6,10 +6,11 @@ Developed using ASP .NET Core MVC (I think the project layout is pretty self-exp
 - Service folder contains ContactService class
 - Persistence folder contains AppDbContext and ContactRepository classes
 - For test purposes added only in-memory database
+- live updates on client side (provided with SignalR)
+- simple GUI with pagination (Razor pages) - view data only
 
 ## TO-DO
 - GUI for adding/editing/deleting Contacts
-- SignalR 
 - error logging
 
 ## Unit tests: 
